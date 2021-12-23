@@ -226,14 +226,12 @@ contract KaraFarm is Ownable {
     function getWithdrawFeeRate(uint256 _pid) public view returns(uint256) {
         UserInfo storage user = userInfo[_pid][msg.sender];
         uint256 duration = block.timestamp.sub(user.depositTime);
-        if (duration <= 3600 * 24 * 7) {
+        if (duration <= 3600 * 24 * 3) {
+            return 20;
+        } else if (duration <= 3600 * 24 * 7) {
+            return 10;
+        } else if (duration <= 3600 * 24 * 15) {
             return 5;
-        } else if (duration <= 3600 * 24 * 14) {
-            return 4;
-        } else if (duration <= 3600 * 24 * 30) {
-            return 3;
-        } else if (duration <= 3600 * 24 * 60) {
-            return 2;
         } else {
             return 0;
         }
