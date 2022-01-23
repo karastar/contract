@@ -154,13 +154,6 @@ contract BoxLand is Comn {
     }
     
     /**
-     * @dev set the land contract address
-     */
-    function setLandAddr(address value) public onlyMaster {
-        _landAddr = value;
-    }
-    
-    /**
      * @dev get the land contract address
      */
     function getLandAddr() public view onlyMaster returns(address) {
